@@ -8,7 +8,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        var book = new Book();
+        var book = new Book("Scott's Grade Book");
         book.AddGrade(67.5);
         book.AddGrade(45.7);
 
@@ -16,9 +16,14 @@ class Program
         grades.Add(56.1);
         
         var result = 0.0;
+        var highGrade = double.MinValue;
         foreach (double number in grades)
         {
-            result += number;
+            if (number > highGrade)
+            {
+                result += number;
+            }
+                
         }
         result /= grades.Count;
         Console.WriteLine($"The average grade is {result:0.00000}");
