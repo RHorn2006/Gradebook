@@ -1,5 +1,5 @@
 ﻿namespace GradeBook;
-class Book
+public class Book
 {
     public Book(string name)
     {
@@ -12,27 +12,27 @@ class Book
         grades.Add(grade);
     }
 
-    public void ShowStatistics()
+    public Statistics GetStatistics()
     {
-        var result = 0.0;
-        var lowGrade = double.MaxValue;
-        var highGrade = double.MinValue;
+        var result = new Statistics();
+        result.Average = 0.0;
+        result.High = double.MaxValue;
+        result.Low = double.MinValue;
         foreach (double number in grades)
         {
-            if (number > highGrade)
-            {
-                highGrade = Math.Max(number, highGrade);
+            if (number > result.High)
+            {result.High = Math.Max(number, result.High);
                 result += number;
             }
-            else if (number < lowGrade)
+            else if (number < result.Low)
             {
-                lowGrade = Math.Min(number, lowGrade);
+                result.Low = Math.Min(number, result.Low);
                 result += number;
             }
 
         }
         result /= grades.Count;
-        Console.WriteLine($"The average grade is {result:0.00000}, the lowest grade is {lowGrade} and the highest grade is {highGrade}");
+        Console.WriteLine($"The average grade is {result:0.00000}, the lowest grade is {result.Low} and the highest grade is {result.High}");
     }
     private List<double> grades;
     private string name;

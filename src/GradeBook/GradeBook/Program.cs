@@ -12,6 +12,6 @@ class Program
         book.AddGrade(67.5);
         book.AddGrade(45.7);
         book.AddGrade(34.7);
-        book.ShowStatistics();
+        book.GetStatistics();
     }
 }
