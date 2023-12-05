@@ -11,21 +11,7 @@ class Program
         var book = new Book("Scott's Grade Book");
         book.AddGrade(67.5);
         book.AddGrade(45.7);
-
-        List<double> grades = new List<double>() { 64.5, 45.3, 62.6 };
-        grades.Add(56.1);
-        
-        var result = 0.0;
-        var highGrade = double.MinValue;
-        foreach (double number in grades)
-        {
-            if (number > highGrade)
-            {
-                result += number;
-            }
-                
-        }
-        result /= grades.Count;
-        Console.WriteLine($"The average grade is {result:0.00000}");
+        book.AddGrade(34.7);
+        book.ShowStatistics();
     }
 }
