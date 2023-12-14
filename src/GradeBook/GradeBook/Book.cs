@@ -4,7 +4,7 @@ public class Book
     public Book(string name)
     {
         grades = new List<double>();
-        this.name = name;
+        Name = name;
     }
 
     public void AddGrade(double grade)
@@ -18,22 +18,18 @@ public class Book
         result.Average = 0.0;
         result.High = double.MaxValue;
         result.Low = double.MinValue;
-        foreach (double number in grades)
-        {
-            if (number > result.High)
-            {result.High = Math.Max(number, result.High);
-                result += number;
-            }
-            else if (number < result.Low)
-            {
-                result.Low = Math.Min(number, result.Low);
-                result += number;
-            }
 
+        foreach (var grade in grades)
+        {
+            result.Low = Math.Min(grade, result.Low);
+            result.High = Math.Max(grade, result.High);
+            result.Average += grade;
         }
-        result /= grades.Count;
-        Console.WriteLine($"The average grade is {result:0.00000}, the lowest grade is {result.Low} and the highest grade is {result.High}");
+        result.Average /= grades.Count;
+
+        return result;
     }
+
     private List<double> grades;
-    private string name;
+    public string Name;
 }
