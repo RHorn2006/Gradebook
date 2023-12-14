@@ -20,8 +20,9 @@ public class Tests
         var result = book.GetStatistics();
 
         // assert
-        Assert.AreEqual(85.6, result.Average);
-        Assert.AreEqual(90.5, result.High);
-        Assert.AreEqual(77.3, result.Low);
+        Assert.That(result.Average, Is.EqualTo(85.6));
+        Assert.That(result.High, Is.EqualTo(90.5));
+        Assert.That(result.Low, Is.EqualTo(77.3));
+        Assert.That(result.Letter, Is.EqualTo('B'));
     }
 }
