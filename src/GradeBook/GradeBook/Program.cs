@@ -18,13 +18,22 @@ class Program
             {
                 break;
             }
-            var grade = double.Parse(input);
-            book.AddGrade(grade);
+
+            try
+            {
+                var grade = double.Parse(input);
+                book.AddGrade(grade);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
         }
-        
-        
 
         var stats = book.GetStatistics();
+        Console.WriteLine($"{Book.category}");
+        Console.WriteLine($"For the book named {book.Name}");
         Console.WriteLine($"The average grade is {stats.Average}");
         Console.WriteLine($"The lowest grade is {stats.Low}");
         Console.WriteLine($"the highest grade is {stats.High}");
